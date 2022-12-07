@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-if隐藏时，p标签会从Dom中移除 -->
+        <p v-if="flag">这是用v-if渲染的</p>
+        <!-- v-show隐藏时，只是display:none -->
+        <p v-show="flag">这是用v-show渲染的</p>
+
+        <div v-if="scoe === 'A'">优秀</div>
+        <div v-else-if="scoe === 'B'">良好</div>
+        <div v-else-if="scoe === 'C'">及格</div>
+        <div v-else>不及格</div>
+
+    </div>
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true,
+                scoe: 'A'
+            }
+        })
+    </script>
+</body>
+</html>

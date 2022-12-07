@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+</head>
+<body>
+    <div id="app">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <th>索引</th>
+                <th>id</th>
+                <th>姓名</th>
+            </thead>
+            <tbody>
+                <!-- 列表渲染，需要展示哪种列表，就在那个上面写v-for -->
+                <!-- 写了v-for，同时要写一个key作为唯一标识，这个key只能是数字或字符串，并且拥有有效的唯一性 -->
+                <tr v-for="(item, index) in list" :key="item.id" :title="item.name + index">
+                    <td>{{ index }}</td>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    {id:1, name:'zhangsan'},
+                    {id:2, name:'lisi'},
+                    {id:3, name:'wangwu'}
+                ]
+            }
+        })
+    </script>
+    
+</body>
+</html>
