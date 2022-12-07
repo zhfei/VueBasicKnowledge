@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- 希望Vue实例管理的区域，帮我们把数据填充到该区域里 -->
+    <div id="root">{{username}}</div>
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        // vue实例对象负责处理View, Model之间的双向流动。
+        // vue实例的入参是它要监听的两头，el: 使用选择器寻找它要监听管理的View容器， data: 数据源与view做双向绑定。
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                username: 'Frog'
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 内容渲染指令 -->
+        <p v-text="username">姓名:</p>
+        <p v-text="gender">性别:</p>
+        <hr>
+        <p>姓名: {{ username }}</p>
+        <p>性别: {{ gender }}</p>
+        <hr>
+        <p v-html="info">内容:</p>
+        <input type="text" :placeholder=" '1+2:'+ 1+2  ">
+
+
+        <!-- 属性绑定指令 -->
+        <input type="text" v-bind:placeholder="placeholder">
+        <input type="text" :placeholder="placeholder">
+
+
+        <!-- 事件绑定指令 -->
+        <p>统计结果： {{ count }}</p>
+        <!-- v-on:可以简写成@, @click;  如果方法要传参，可以直接在方法的”“里面使用add(1)进行表示 -->
+        <button v-on:click="add(2)" >加二</button>
+        <!-- 如果方法sub没有传参，系统会默认传递一个event参数， 如果sub(1)传参，那么这个默认事件event参数就会被覆盖-->
+        <button v-on:click="sub" >减一</button>
+        <!-- 如果即要传参又要传递事件event， 可以使用Vue提供的系统事件$event当做普通参数传递sub(1, $event) -->
+        <button v-on:click="sub2(2, $event)" >减二</button>
+
+        <!-- 事件修饰符：阻止默认行为，停止冒泡 -->
+        <a href="http://www.baidu.com" @click.prevent="goBaidu">跳转到百度</a>
+        <!-- 按键修饰符 -->
+        <input type="text" @keyup.esc="cleanHandler" @keyup.enter="commitHandler">
+
+
+    </div>
+
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                username: 'Frog',
+                gender: '男',
+                info: '<p style="color: red; ">带html标签的内容</p>',
+                placeholder: '请输入占位表示',
+                count: 0
+            },
+            methods: {
+                add: function (n) {
+                    vm.count += n
+                },
+                sub(e) {
+                    //推荐这样简写
+                    //vm就等于this, 是一个实例对象
+                    this.count -= 1
+
+                    console.log(e);
+                    
+                    if (this.count % 2 === 0) {
+                        // e.target是事件的响应对象
+                        e.target.style.backgroundColor = 'red';
+                    } else {
+                        e.target.style.backgroundColor = '';
+                    }
+                },
+                sub2(n, e) {
+                    console.log(n);
+                    console.log(e);
+                },
+                goBaidu(e) {
+                    e.preventDefault()
+                    console.log('跳转到baidu');
+                },
+                cleanHandler(e){
+                    //当esc键 弹出时回调
+                    console.log(e.target);
+                },
+                commitHandler(e){
+                    console.log('提交');
+                }
+            
+            }
+        })
+
+
+    </script>
+    
+</body>
+</html>
