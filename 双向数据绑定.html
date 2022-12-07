@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="app">
+        <!-- 双向绑定指令 -->
         <p>用户名：{{ username }}</p>
         <input type="text" v-model="username">
         <hr>
@@ -20,7 +21,17 @@
             <option value="2">上海</option>
             <option value="3">广州</option>
         </select>
+        <hr>
 
+        <!-- v-model双向绑定修饰符 -->
+        <input type="text" v-model="num1"> + <input type="text" v-model ="num2"> = <span>{{ num1 + num2}}</span>
+        <hr>
+        <input type="text" v-model.number="num1"> + <input type="text" v-model.number ="num2"> = <span>{{ num1 + num2}}</span>
+        <hr>
+        <input type="text" v-model.trim="username">
+        <hr>
+        <!-- 当点击enter时才更新，而不每次修改都更新 -->
+        <input type="text" v-model.lazy="username">
 
     </div>
 
@@ -30,7 +41,9 @@
             el: '#app',
             data: {
                 username: '',
-                city: '0'
+                city: '0',
+                num1: 1,
+                num2: 1
 
             }
         })
