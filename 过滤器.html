@@ -12,6 +12,9 @@
         <p>{{ message | capi }}</p>
         <hr>
         <p>时间：{{ new Date() | dateFormate }}</p>
+
+        <!-- 过滤器可以连续调用多次，并且过滤器可以传参，但是传递的参数在接收时是从第2个开始的，第1个默认是管道传参。 过滤在Vue3被剔除了 -->
+        <!-- <p>时间：{{ new Date() | dateFormate1(param1, param2) | dateFormate }</p> -->
     </div>
 
     <script src="./lib/dayjs.min.js"></script>
