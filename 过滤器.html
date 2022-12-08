@@ -10,15 +10,26 @@
     <div id="app">
         <!-- 过滤器：管道符，和linux系统提供的管道操作相似，过滤器是一个函数,定义在filters下面 -->
         <p>{{ message | capi }}</p>
+        <hr>
+        <p>时间：{{ new Date() | dateFormate }}</p>
     </div>
 
+    <script src="./lib/dayjs.min.js"></script>
     <script src="./lib/vue-2.6.12.js"></script>
     <script>
+
+        // 添加全局过滤器
+        Vue.filter('dateFormate', function (time) {
+            const dtstr = dayjs(time).format('YYYY-HH-DD HH:mm:ss')
+            return dtstr
+        })
+
         vm = new Vue({
             el: '#app',
             data: {
                 message: 'hello vue.js'
             },
+            // 过滤器是一个函数，它定义在filters下面
             filters: {
                 capi(val) {
                     // val: 标识通过管道符传过来的值
