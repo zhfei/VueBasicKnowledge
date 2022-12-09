@@ -10,6 +10,8 @@
 <body>
     <div id="app">
         <input type="text" v-model="username">
+        <hr>
+        <input type="text" v-model="userBigName">
     </div>
 
     <script src="./lib/vue-2.6.12.js"></script>
@@ -17,17 +19,31 @@
         var vm = new Vue({
             el: '#app',
             data: {
-                username: ''
+                username: '',
+                userBigName: 'admin'
             },
             watch: {
-                // 监听器就是一个函数，监听哪个属性，方法名就是那个属性名
+                // 函数监听器，监听哪个属性，方法名就是那个属性名
                 // 第一个是新值，第二个是旧值
+                // 缺点：页面初始化时没法自动触发
                 username(newV, oldV) {
                     console.log(newV, oldV);
                     $.get('https://www.escook.cn/api/finduser/'+newV, function(res){
                         console.log(res);
                         console.log($);
                     })
+                },
+                // 对象侦听器，侦听哪个属性，key值就设置成哪个属性名
+                // 优点：通过设置immediate为true, 可以在页面加载时，默认执行一次调用
+                userBigName: {
+                    handler(newV, oldV) {
+                        console.log(newV, oldV);
+                        $.get('https://www.escook.cn/api/finduser/'+newV, function(res){
+                        console.log(res);
+                        console.log($);
+                    })
+                    },
+                    immediate: true
                 }
             }
         })
