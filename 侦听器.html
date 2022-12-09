@@ -58,6 +58,11 @@
                         console.log(newV);
                     },
                     deep: true
+                },
+                //  子属性方法监听器，解决缺点2
+                //  可以使用下面这个'属性.子属性'的方法，做方法监听。可以做到直接监听到子属性，并且newV打印的也是子属性的值
+                'userInfo.city'(newV) {
+                    console.log(newV);
                 }
             }
         })
