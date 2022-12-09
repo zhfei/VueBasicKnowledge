@@ -12,6 +12,8 @@
         <input type="text" v-model="username">
         <hr>
         <input type="text" v-model="userBigName">
+        <hr>
+        <input type="text" v-model="userInfo.city">
     </div>
 
     <script src="./lib/vue-2.6.12.js"></script>
@@ -20,12 +22,16 @@
             el: '#app',
             data: {
                 username: '',
-                userBigName: 'admin'
+                userBigName: 'admin',
+                userInfo: {
+                    city: ''
+                }
             },
             watch: {
                 // 函数监听器，监听哪个属性，方法名就是那个属性名
                 // 第一个是新值，第二个是旧值
-                // 缺点：页面初始化时没法自动触发
+                // 缺点1：页面初始化时没法自动触发
+                // 缺点2：当属性是一个对象时，修改对象中的属性，函数监听器无法监听到
                 username(newV, oldV) {
                     console.log(newV, oldV);
                     $.get('https://www.escook.cn/api/finduser/'+newV, function(res){
@@ -34,7 +40,7 @@
                     })
                 },
                 // 对象侦听器，侦听哪个属性，key值就设置成哪个属性名
-                // 优点：通过设置immediate为true, 可以在页面加载时，默认执行一次调用
+                // 优点1：通过设置immediate为true, 可以在页面加载时，默认执行一次调用
                 userBigName: {
                     handler(newV, oldV) {
                         console.log(newV, oldV);
@@ -44,6 +50,14 @@
                     })
                     },
                     immediate: true
+                },
+                // 对象侦听器，可以监听对象属性中的子属性
+                // 优点2：对象侦听器可以开启深度监听，修改属性对象中的一个子属性，收到监听回调
+                userInfo: {
+                    handler(newV) {
+                        console.log(newV);
+                    },
+                    deep: true
                 }
             }
         })
