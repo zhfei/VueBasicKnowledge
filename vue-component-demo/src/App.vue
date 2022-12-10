@@ -1,28 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Hello Vue Component</h1>
+    <!-- 3.使用组件 -->
+    <Left/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// 1.导入组件
+import Left from '@/components/Left.vue'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    // 2.注册组件
+    Left
   }
-}
+};
 </script>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
