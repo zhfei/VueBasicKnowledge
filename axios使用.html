@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="postBtn">发送网络请求</button>
+    <button id="postBtn2">await发送网络请求</button>
+    <button id="postBtn3">ES6解构发送网络请求</button>
+    <hr>
+    <button id="get">get按钮</button>
+    <button id="post">post按钮</button>
+
+
+    <script src="./lib/axios.js"></script>
+    <script>
+        
+        // -------------------------------------axios通用方法get,post------------------------------------------------------
+
+        // GET: 方法
+        axios({
+            method: 'GET',
+            url: 'http://www.liulongbin.top:3006/api/getbooks',
+            params: {  //params: get请求url参数
+                id: 1
+            }
+        }).then(function (result) {
+            console.log(result);
+        })
+        document.querySelector('#postBtn3').addEventListener('click', async function(e) {
+            // await axios返回的是一个对象{}, ES6可以使用对象解构的方式直接得到里面的某个属性，然后可以通过”:“对属性重命名
+            const { data: res } = await axios({
+                method: 'GET',
+                url: 'http://www.liulongbin.top:3006/api/getbooks'
+            })
+
+            console.log(res.data);
+        })
+        
+
+        // POST: 方法
+        document.querySelector('#postBtn').addEventListener('click', function(params) {
+            axios({
+                method: 'POST',
+                url: 'http://www.liulongbin.top:3006/api/post',
+                data: { // data: post请求请求体参数
+                    name: 'zhangsan',
+                    age: 20
+                }
+            }).then(function(result) {
+                console.log(result);
+            })
+        })
+        document.querySelector('#postBtn2').addEventListener('click', async function(params) {
+            // 返回值是Promise的方法都可以使用await，模拟同步请求； 对应的在外部方法使用async修饰
+            const res = await axios({
+                method: 'POST',
+                url: 'http://www.liulongbin.top:3006/api/post',
+                data: { // data: post请求请求体参数
+                    name: 'zhangsan',
+                    age: 20
+                }
+            })
+
+            console.log(res);
+        })
+
+
+        // -------------------------------------axios简洁方法get,post------------------------------------------------------
+       
+        // 使用axios简洁方法get,post
+        // get第二个参数需要在{}对象里面写params:参数表示get请求参数
+        document.querySelector('#get').addEventListener('click', async function(e) {
+            const { data: res } = await axios.get('http://www.liulongbin.top:3006/api/getbooks', {
+                params: {
+                    id: 1
+                }
+            })
+            console.log(res.data);
+        })
+        // post第二个参数默认就是请求体，无需在里面写data:{}
+        document.querySelector('#post').addEventListener('click', async function (params) {
+            const {data} = await axios.post('http://www.liulongbin.top:3006/api/post', {
+                name: 'zz',
+                gender: '男'
+            })
+            console.log(data);
+        })
+
+
+    </script>
+</body>
+</html>
