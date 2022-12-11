@@ -1,8 +1,6 @@
 <template>
     <div id="counter">
         Counter - 子组件
-        <MyLeft/>
-        <MyRight/>
     </div>
 </template>
 
