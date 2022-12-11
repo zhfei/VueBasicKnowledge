@@ -1,7 +1,7 @@
 <template>
     <div id="left">
         Left - 组件
-        <Counter></Counter>
+        <Counter v-bind:customInitValue="3"></Counter>
     </div>
 </template>
 
