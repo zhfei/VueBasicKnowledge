@@ -1,7 +1,7 @@
 <template>
     <div id="right">
         Right 子组件
-        <Counter></Counter>
+        <Counter :customInitValue="3"></Counter>
     </div>
 </template>
 
