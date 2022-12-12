@@ -1,12 +1,13 @@
 <template>
     <div id="right">
-        Right 子组件
+        Right 子组件 {{reciveMsg}}
         <Counter :customInitValue="3"></Counter>
     </div>
 </template>
 
 <script>
 import Counter from '@/components/Counter.vue'
+import bus from '../event/EventBus'
 
 export default {
     components: {
@@ -14,17 +15,16 @@ export default {
     },
     data() {
         return {
-            
+            reciveMsg: ''
         };
     },
 
-    mounted() {
-        
-    },
+    created() {
+        bus.$on('sendMsg', (val) => {
+            this.reciveMsg = val
+        })
+    }
 
-    methods: {
-        
-    },
 };
 </script>
 

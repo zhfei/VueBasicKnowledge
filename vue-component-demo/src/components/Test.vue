@@ -31,6 +31,7 @@ export default {
 
     // 组件实例创建成功
     created() {
+        
         console.log('组件创建完成');
         this.getBookList()
     },
