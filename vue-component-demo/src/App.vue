@@ -8,6 +8,7 @@
     <MyLeft></MyLeft>
     <MyRight></MyRight>
     <Test></Test>
+    <Ref></Ref>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 import Left from '@/components/Left.vue'
 import Test from '@/components/Test.vue'
 import Child from '@/components/Child.vue'
+import Ref from '@/components/Ref.vue'
 
 export default {
 
@@ -28,7 +30,8 @@ export default {
     // 2.注册组件
     Left,
     Test,
-    Child
+    Child,
+    Ref
   },
 
   methods: {
