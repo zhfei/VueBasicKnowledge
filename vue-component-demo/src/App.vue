@@ -3,6 +3,10 @@
     <h1>Hello Vue Component</h1>
     <h2>Child组件的计数为：{{supCount}}</h2>
     <button @click="resetZero">将计数重置为0</button>
+    <hr>
+    <input v-if="visibelInput" @blur="hideInput" ref="iptRef" type="text">
+    <button v-else @click="showInput" >请输入文字</button>
+    <hr>
     <!-- 3.使用组件 -->
     <Child ref="child" @numchanged="handleChildChange"></Child>
     <Left/>
@@ -24,7 +28,8 @@ export default {
 
   data() {
     return {
-      supCount: 0
+      supCount: 0,
+      visibelInput: false,
     }
   },
   components: {
@@ -43,6 +48,15 @@ export default {
     resetZero() {
       console.log(this);
       this.$refs.child.count = 0
+    },
+    showInput() {
+      this.visibelInput = true
+      this.$nextTick(()=>{
+        this.$refs.iptRef.focus()
+      })
+    },
+    hideInput() {
+      this.visibelInput = false
     }
   }
 
