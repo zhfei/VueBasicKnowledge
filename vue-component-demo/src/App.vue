@@ -2,8 +2,9 @@
   <div id="app">
     <h1>Hello Vue Component</h1>
     <h2>Child组件的计数为：{{supCount}}</h2>
+    <button @click="resetZero">将计数重置为0</button>
     <!-- 3.使用组件 -->
-    <Child @numchanged="handleChildChange"></Child>
+    <Child ref="child" @numchanged="handleChildChange"></Child>
     <Left/>
     <MyLeft></MyLeft>
     <MyRight></MyRight>
@@ -38,6 +39,10 @@ export default {
     handleChildChange(val) {
       console.log(val);
       this.supCount = val
+    },
+    resetZero() {
+      console.log(this);
+      this.$refs.child.count = 0
     }
   }
 
