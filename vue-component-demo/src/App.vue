@@ -57,6 +57,38 @@ export default {
     },
     hideInput() {
       this.visibelInput = false
+
+      var list = ['tom', 'lilei', 'hanmei', 'poli']
+      //1
+      list.forEach((item, index) => {
+        console.log(index);
+        if (index === 2) {
+          return true
+        }
+      })
+      console.log('-----------------');
+      //2.
+      list.some((item, index) => {
+        console.log(index);
+        if (index === 1) {
+          return true
+        }
+      })
+
+      const res = list.every(item => item.length > 3)
+
+      var totalLength = 0;
+      //3.
+      list.filter(item => item.length > 5).forEach((item) => {
+        totalLength += item.length * 10
+      })
+
+      //4.
+      // list.filter(item => item.length > 5).reduce((上一次循环的结果和, 当前item) => {}, 初始化值)
+      const resCount = list.filter(item => item.length > 5).reduce((totalLength, item) => {
+        return totalLength += item.length * 10
+      }, 0)
+      console.log(resCount);
     }
   }
 
