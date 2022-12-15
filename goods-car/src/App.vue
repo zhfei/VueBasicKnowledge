@@ -14,6 +14,11 @@ export default {
   created() {
     this.initData()
   },
+  data() {
+    return {
+      list: []
+    }
+  },
   components: {
     Header,
     Footer
@@ -22,6 +27,9 @@ export default {
     async initData() {
       const {data: result} = await axios.get('https://www.escook.cn/api/cart')
       console.log(result);
+      if (result.status === 200) {
+        this.list = result.list
+      }
     }
   }
 }
