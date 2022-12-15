@@ -1,23 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app-container">
+    <Header></Header>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from '@/components/Header/Header.vue'
+import Footer from '@/components/Footer/Footer.vue'
+import axios from 'axios'
 
 export default {
-  name: 'App',
+  created() {
+    this.initData()
+  },
   components: {
-    HelloWorld
+    Header,
+    Footer
+  },
+  methods: {
+    async initData() {
+      const {data: result} = await axios.get('https://www.escook.cn/api/cart')
+      console.log(result);
+    }
   }
 }
 </script>
 
 <style lang="less">
-#app {
+#app-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
