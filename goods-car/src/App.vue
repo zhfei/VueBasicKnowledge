@@ -2,7 +2,15 @@
   <div id="app-container">
     <Header></Header>
     <Footer></Footer>
-    <Goods v-for="item in list" :key="item.id" :goods_name="item.goods_name" :goods_img="item.goods_img"></Goods>
+    <Goods v-for="item in list" 
+    :key="item.id" 
+    :id="item.id"
+    :goods_name="item.goods_name" 
+    :goods_img="item.goods_img" 
+    :goods_price="item.goods_price"
+    :goods_state="item.goods_state"
+    @changeGoodsState="handleCheck"
+    ></Goods>
   </div>
 </template>
 
@@ -33,6 +41,14 @@ export default {
       if (result.status === 200) {
         this.list = result.list
       }
+    },
+
+    handleCheck(val) {
+      console.log(val);
+      this.list.filter(item => item.id===val.id).forEach(item=>{
+        item.goods_state = !item.goods_state
+      })
+      console.log(this.list);
     }
   }
 }
