@@ -2,12 +2,14 @@
   <div id="app-container">
     <Header></Header>
     <Footer></Footer>
+    <Goods v-for="item in list" :key="item.id" :goods_name="item.goods_name" :goods_img="item.goods_img"></Goods>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header/Header.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import Goods from './components/Goods/Goods.vue'
 import axios from 'axios'
 
 export default {
@@ -21,7 +23,8 @@ export default {
   },
   components: {
     Header,
-    Footer
+    Footer,
+    Goods
   },
   methods: {
     async initData() {
