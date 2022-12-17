@@ -10,16 +10,23 @@
 
         <div id="goods-info">
             <h5 class="goods-title">{{ goods_name }}</h5>
+            <Counter :count="goods_count"></Counter>
             <div id="goods-info-bottom">
                 <span class="goods-price">￥{{ goods_price }}</span>
             </div>
+            
         </div>
     </div>
 </template>
 
 <script>
+import Counter from '@/components/Counter/Counter.vue'
+
 export default {
     name: 'GoodsCarGoods',
+    components: {
+        Counter
+    },
     props: {
         id: {
             type: Number,
@@ -67,9 +74,10 @@ export default {
 </script>
 
 <style  scoped>
-.container {
+.container, .custom-control {
     flex-direction: row;
-    display: flex;
+    display: flex;  
 }
+
 
 </style>

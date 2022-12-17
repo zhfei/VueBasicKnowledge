@@ -5,6 +5,7 @@
     :key="item.id" 
     :id="item.id"
     :goods_name="item.goods_name" 
+    :goods_count="item.goods_count"
     :goods_img="item.goods_img" 
     :goods_price="item.goods_price"
     :goods_state="item.goods_state"
