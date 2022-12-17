@@ -1,7 +1,6 @@
 <template>
   <div id="app-container">
     <Header></Header>
-    <Footer></Footer>
     <Goods v-for="item in list" 
     :key="item.id" 
     :id="item.id"
@@ -11,6 +10,7 @@
     :goods_state="item.goods_state"
     @changeGoodsState="handleCheck"
     ></Goods>
+    <Footer :allSelectState="selectAllState"></Footer>
   </div>
 </template>
 
@@ -48,7 +48,11 @@ export default {
       this.list.filter(item => item.id===val.id).forEach(item=>{
         item.goods_state = !item.goods_state
       })
-      console.log(this.list);
+    }
+  },
+  computed: {
+    selectAllState() {
+      return this.list.every(item=>item.goods_state)
     }
   }
 }

@@ -2,8 +2,8 @@
     <div class="container">
         <div class="thumb">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="cb1" :checked="goods_state" @change="checkGoods">
-                <label for="cb1" class="custom-control-label"></label>
+                <input type="checkbox" class="custom-control-input" :id="'cb'+id" :checked="goods_state" @change="checkGoods">
+                <label :for="'cb'+id" class="custom-control-label"></label>
                 <img :src="goods_img" alt="商品名称" style="width: 100px;"></img>
             </div>
         </div>
@@ -58,10 +58,8 @@ export default {
     },
 
     methods: {
-        checkGoods(e) {
-            console.log(this.id, e.target.checked);
-            
-            this.$emit('changeGoodsState', {id:this.id, goods_state:this.goods_state})
+        checkGoods(e) {            
+            this.$emit('changeGoodsState', {id:this.id, goods_state:e.target.checked})
         }
         
     },
