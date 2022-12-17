@@ -10,7 +10,7 @@
     :goods_state="item.goods_state"
     @changeGoodsState="handleCheck"
     ></Goods>
-    <Footer :allSelectState="selectAllState"></Footer>
+    <Footer :allSelectState="selectAllState" :allSelectPrice="selectAllPrice" @selectAll="handleSelectAll"></Footer>
   </div>
 </template>
 
@@ -48,11 +48,21 @@ export default {
       this.list.filter(item => item.id===val.id).forEach(item=>{
         item.goods_state = !item.goods_state
       })
+    },
+    handleSelectAll(val) {
+      this.list.forEach(item=>item.goods_state=val)
     }
   },
   computed: {
     selectAllState() {
       return this.list.every(item=>item.goods_state)
+    },
+    selectAllPrice() {
+      return this.list
+      .filter(item=>item.goods_state)
+      .reduce((total, item)=>{
+        return total += item.goods_price*item.goods_count
+      }, 0);
     }
   }
 }

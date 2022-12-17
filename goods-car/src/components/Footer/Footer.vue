@@ -1,7 +1,14 @@
 <template>
-    <div>
-        Footer
-        <span>{{allSelectState}}</span>
+    <div class="footer-container">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="cbFull" :checked="allSelectState" @change="selectAll">
+            <label class="custom-control-label" for="cbFull">全选</label>
+        </div>
+
+        <div>
+            <span>合计：</span>
+            <span class="total-price">￥ {{allSelectPrice}}</span>
+        </div>
     </div>
 </template>
 
@@ -12,6 +19,10 @@ export default {
         allSelectState: {
             type: Boolean,
             default: true
+        },
+        allSelectPrice: {
+            type: Number,
+            default: 0
         }
     },
 
@@ -26,11 +37,23 @@ export default {
     },
 
     methods: {
-        
+        selectAll(e) {
+            this.$emit('selectAll', e.target.checked)
+        }
     },
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.footer-container {
+    height: 60px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    background-color: aquamarine;
+
+}
 
 </style>
