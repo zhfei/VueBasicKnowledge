@@ -9,6 +9,10 @@
             <span>合计：</span>
             <span class="total-price">￥ {{allSelectPrice}}</span>
         </div>
+
+        <div>
+            <span>购买数({{allSelectCount}})</span>
+        </div>
     </div>
 </template>
 
@@ -21,6 +25,10 @@ export default {
             default: true
         },
         allSelectPrice: {
+            type: Number,
+            default: 0
+        },
+        allSelectCount: {
             type: Number,
             default: 0
         }

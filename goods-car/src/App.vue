@@ -11,7 +11,7 @@
     :goods_state="item.goods_state"
     @changeGoodsState="handleCheck"
     ></Goods>
-    <Footer :allSelectState="selectAllState" :allSelectPrice="selectAllPrice" @selectAll="handleSelectAll"></Footer>
+    <Footer :allSelectState="selectAllState" :allSelectPrice="selectAllPrice" :allSelectCount="selectAllCount" @selectAll="handleSelectAll"></Footer>
   </div>
 </template>
 
@@ -74,6 +74,13 @@ export default {
       .reduce((total, item)=>{
         return total += item.goods_price*item.goods_count
       }, 0);
+    },
+    selectAllCount() {
+      return this.list
+      .filter(item=>item.goods_state)
+      .reduce((total, item)=>{
+        return total += item.goods_count
+      }, 0)
     }
   }
 }
