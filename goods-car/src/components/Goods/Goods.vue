@@ -10,7 +10,7 @@
 
         <div id="goods-info">
             <h5 class="goods-title">{{ goods_name }}</h5>
-            <Counter :count="goods_count"></Counter>
+            <Counter :count="goods_count" :id="id"></Counter>
             <div id="goods-info-bottom">
                 <span class="goods-price">￥{{ goods_price }}</span>
             </div>

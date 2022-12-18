@@ -20,10 +20,20 @@ import Header from '@/components/Header/Header.vue'
 import Footer from '@/components/Footer/Footer.vue'
 import Goods from './components/Goods/Goods.vue'
 import axios from 'axios'
+import bus from '@/tools/EventBus'
 
 export default {
   created() {
     this.initData()
+    bus.$on('changeOneCount', (val)=>{
+      console.log(val);
+      this.list.some(item=>{
+        if (item.id === val.id) {
+          item.goods_count = val.count
+          return true
+        }
+      })
+    })
   },
   data() {
     return {
