@@ -26,7 +26,10 @@ export default {
 
 <style scoped>
 .container {
-    background-color: antiquewhite;
+    background-color: chocolate;
+    width: 100%;
+    height: 200px;
+    float: left;
 }
 
 </style>

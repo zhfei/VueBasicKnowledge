@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <Left></Left>
-    <Right></Right>
-    <component :is="comName"></component>
+    <button @click="comName='Left'">Left</button>
+    <button @click="comName='Right'">Right</button>
+    <hr>
+
+    <KeepAlive>
+      <component :is="comName"></component>
+    </KeepAlive>
+    
   </div>
 </template>
 
