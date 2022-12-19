@@ -4,10 +4,14 @@
     <button @click="comName='Right'">Right</button>
     <hr>
 
-    <KeepAlive>
+    <!-- <KeepAlive include="Left,Right">
+      
+    </KeepAlive> -->
+
+    <keep-alive include="Left">
       <component :is="comName"></component>
-    </KeepAlive>
-    
+    </keep-alive>
+
   </div>
 </template>
 
