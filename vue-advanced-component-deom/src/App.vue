@@ -4,26 +4,27 @@
     <button @click="comName='Right'">Right</button>
     <hr>
 
-    <!-- <KeepAlive include="Left,Right">
-      
-    </KeepAlive> -->
-
-    <keep-alive include="Left">
+    <KeepAlive include="Left,Right">
       <component :is="comName"></component>
-    </keep-alive>
+    </KeepAlive>
 
+    <SlotLeft>
+      <p>插槽组件子内容</p>
+    </SlotLeft>
   </div>
 </template>
 
 <script>
 import Left from '@/components/Left/Left.vue'
 import Right from '@/components/Right/Right.vue'
+import SlotLeft from '@/components/SlotLeft/SlotLeft.vue'
 
 export default {
   name: 'VueAdvancedComponentDeomApp',
   components: {
     Left,
-    Right
+    Right,
+    SlotLeft
   },
 
   data() {

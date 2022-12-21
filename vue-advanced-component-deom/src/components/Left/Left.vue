@@ -37,7 +37,6 @@ export default {
     },
     activated() {
         console.log('被激活，进入前台',this);
-
     }
 };
 </script>
