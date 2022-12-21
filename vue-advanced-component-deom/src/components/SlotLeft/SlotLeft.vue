@@ -2,7 +2,7 @@
     <div class="container">
         插槽Left组件
         <hr>
-        <slot></slot>
+        <slot name="second"></slot>
     </div>
 </template>
 
