@@ -13,8 +13,15 @@
       <!-- 在外部使用这个标签时，可以选择将插槽内容根据v-slot:name放到那个slot定义中 -->
       <!-- v-slot:name使用时，外面要使用template虚拟组件进行包裹，template虚拟组件并没有真实的内容 -->
       <template v-slot:second>
-        <p>插槽组件子内容</p>
+        <p>second插槽组件子内容</p>
       </template>
+
+      <!-- v-slot:标志的简写是# -->
+      <template #third>
+
+      </template>
+
+      <p>默认添加到默认插槽位置中</p>
       
     </SlotLeft>
   </div>
