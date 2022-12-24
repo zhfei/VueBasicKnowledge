@@ -34,10 +34,10 @@ export default {
 
     methods: {
         addOne() {
-            bus.$emit('changeOneCount', {count:this.count+1, id:this.id})
+            this.$emit('changeOneCount', {count:this.count+1, id:this.id})
         },
         subOne() {
-            bus.$emit('changeOneCount', {count:this.count-1, id:this.id})
+            this.$emit('changeOneCount', {count:this.count-1, id:this.id})
         }
     },
 };
