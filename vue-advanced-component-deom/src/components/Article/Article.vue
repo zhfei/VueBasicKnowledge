@@ -17,6 +17,7 @@
             文章的尾部
         </slot>
         
+        <p v-color>文章描述</p>
     </div>
 </template>
 
@@ -40,6 +41,17 @@ export default {
     methods: {
         
     },
+    // 私有自定义指令
+    directives: {
+        color: {
+            // 当指令第一次被绑定到元素上面时，会执行bind函数
+            bind(el) {
+                console.log(el);
+                el.style.color = 'red'
+            }
+        }
+
+    }
 };
 </script>
 
