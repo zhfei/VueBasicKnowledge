@@ -24,6 +24,22 @@
       <p>默认添加到默认插槽位置中</p>
       
     </SlotLeft>
+
+    <Article>
+
+      <template v-slot:header>
+        <h2>桃花潭水深千尺</h2>
+      </template>
+
+      <template v-slot:body="scope">
+        <p>桃花潭水深千尺, 不及汪伦送我情</p>
+        <p>{{ scope }}</p>
+      </template>
+
+      <template v-slot:footer>
+        <span>作者：李白</span>
+      </template>
+    </Article>
   </div>
 </template>
 
@@ -31,13 +47,15 @@
 import Left from '@/components/Left/Left.vue'
 import Right from '@/components/Right/Right.vue'
 import SlotLeft from '@/components/SlotLeft/SlotLeft.vue'
+import Article from '@/components/Article/Article.vue'
 
 export default {
   name: 'VueAdvancedComponentDeomApp',
   components: {
     Left,
     Right,
-    SlotLeft
+    SlotLeft,
+    Article
   },
 
   data() {
