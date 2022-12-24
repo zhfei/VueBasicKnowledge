@@ -10,7 +10,9 @@
     :goods_price="item.goods_price"
     :goods_state="item.goods_state"
     @changeGoodsState="handleCheck"
-    ></Goods>
+    >
+    <Counter :count="item.goods_count" :id="item.id"></Counter>
+  </Goods>
     <Footer :allSelectState="selectAllState" :allSelectPrice="selectAllPrice" :allSelectCount="selectAllCount" @selectAll="handleSelectAll"></Footer>
   </div>
 </template>
