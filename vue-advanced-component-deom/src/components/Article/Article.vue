@@ -44,24 +44,34 @@ export default {
     },
     // 私有自定义指令
     directives: {
-        color: {
-            // 当指令第一次被绑定到元素上面时，会执行bind函数， 其他都不再调用
-            // binding是私有自定义指令的传参
-            bind(el, binding) {
-                console.log(el);
-                el.style.color = 'red'
+        // color: {
+        //     // 当指令第一次被绑定到元素上面时，会执行bind函数， 其他都不再调用
+        //     // binding是私有自定义指令的传参
+        //     bind(el, binding) {
+        //         console.log(el);
+        //         el.style.color = 'red'
 
-                console.log(binding);
-                el.style.color = binding.value
-            },
-            // Dom每次更新的时候调用
-            update(el, binding) {
-                console.log(el);
-                el.style.color = 'red'
+        //         console.log(binding);
+        //         el.style.color = binding.value
+        //     },
+        //     // Dom每次更新的时候调用
+        //     update(el, binding) {
+        //         console.log(el);
+        //         el.style.color = 'red'
 
-                console.log(binding);
-                el.style.color = binding.value
-            }
+        //         console.log(binding);
+        //         el.style.color = binding.value
+        //     }
+        // }
+
+
+        // 如果自定义指令中的bind方法和update方法的实现一样，那么可以使用color: function(){}形式，统一实现。
+        color(el, bingding) {
+            console.log(el);
+            el.style.color = 'red'
+
+            console.log(binding);
+            el.style.color = binding.value
         }
 
     }
