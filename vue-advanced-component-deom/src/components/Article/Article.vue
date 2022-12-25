@@ -18,6 +18,7 @@
         </slot>
         
         <p v-color>文章描述</p>
+        <p v-color="'blue'">私有自定义指令传参</p>
     </div>
 </template>
 
@@ -45,9 +46,12 @@ export default {
     directives: {
         color: {
             // 当指令第一次被绑定到元素上面时，会执行bind函数
-            bind(el) {
+            bind(el, binding) {
                 console.log(el);
                 el.style.color = 'red'
+
+                console.log(binding);
+                el.style.color = binding.value
             }
         }
 
