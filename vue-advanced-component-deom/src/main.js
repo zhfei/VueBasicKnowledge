@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 Vue.directive('color', {
   bind(el, binding) {
@@ -12,7 +12,7 @@ Vue.directive('color', {
   }
 })
 
-Vue.directive('color', (el, binding) {
+Vue.directive('color', (el, binding) =>{
   el.style.color = binding.value
 })
 

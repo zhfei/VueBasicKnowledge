@@ -66,7 +66,7 @@ export default {
 
 
         // 如果自定义指令中的bind方法和update方法的实现一样，那么可以使用color: function(){}形式，统一实现。
-        color(el, bingding) {
+        color(el, binding) {
             console.log(el);
             el.style.color = 'red'
 
