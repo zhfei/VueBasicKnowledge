@@ -1,6 +1,7 @@
 <template>
+    
     <div class="article-container">
-     
+        
         <slot name="header">
             文章的头部
         </slot>
@@ -72,6 +73,7 @@ export default {
 
             console.log(binding);
             el.style.color = binding.value
+        
         }
 
     }
