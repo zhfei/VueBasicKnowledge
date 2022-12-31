@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import About from '@/components/About/About.vue'
 import Center from '@/components/Center/Center.vue'
 import Home from '@/components/Home/Home.vue'
+import Tab1 from '@/components/Tabs/Tab1.vue'
+import Tab2 from '@/components/Tabs/Tab2.vue'
 
 // 将Router安装为Vue的插件
 Vue.use(Router)
@@ -15,7 +17,16 @@ const router = new Router({
     { path: '/', redirect: '/home' },
     // 路由匹配规则，实例对应是根据匹配规则，从上到下逐条匹配的
     { path: '/home', component: Home },
-    { path: '/about', component: About },
+    // 嵌套路由，就是在对应路由容器配置项上增加children属性， 然后在这个子路由配置上增加嵌套子路由的配置。
+    // 嵌套子路由的path配置无需是/开头，默认router会自动添加
+    {
+      path: '/about',
+      component: About,
+      children: [
+        { path: 'tab1', component: Tab1 },
+        { path: 'tab2', component: Tab2 }
+      ]
+    },
     { path: '/center', component: Center }
   ]
 })
