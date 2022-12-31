@@ -6,7 +6,9 @@
     <a href="#/center">个人中心</a>
     <a href="#/about">关于</a>
 
-    <component :is="comName"></component>
+    <!-- <component :is="comName"></component> -->
+    <!-- 使用vue-router默认就存在这个占位组件，这个是路由视图的出口 -->
+    <router-view></router-view>
   </div>
 </template>
 
