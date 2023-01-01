@@ -22,8 +22,12 @@ const router = new Router({
     {
       path: '/about',
       component: About,
+      // 默认子路由方法1：设置父路由的重定向地址
+      // redirect: '/about/tab1',
       children: [
-        { path: 'tab1', component: Tab1 },
+        // { path: 'tab1', component: Tab1 },
+        // 默认子路由方法2：在父路由的children中，设置默认路由的path:'', 这样表示父路由默认展示这个子路由
+        { path: '', component: Tab1 },
         { path: 'tab2', component: Tab2 }
       ]
     },
