@@ -5,6 +5,7 @@ import Center from '@/components/Center/Center.vue'
 import Home from '@/components/Home/Home.vue'
 import Tab1 from '@/components/Tabs/Tab1.vue'
 import Tab2 from '@/components/Tabs/Tab2.vue'
+import Movie from '@/components/Movie/Movie.vue'
 
 // 将Router安装为Vue的插件
 Vue.use(Router)
@@ -31,7 +32,14 @@ const router = new Router({
         { path: 'tab2', component: Tab2 }
       ]
     },
-    { path: '/center', component: Center }
+    {
+      path: '/center',
+      component: Center,
+      children: [
+        // id部分是可变路由的参数部分，它是随参数变化的。
+        { path: 'movie/:id', component: Movie }
+      ]
+    }
   ]
 })
 
