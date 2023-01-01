@@ -37,7 +37,7 @@ const router = new Router({
       component: Center,
       children: [
         // id部分是可变路由的参数部分，它是随参数变化的。
-        { path: 'movie/:id', component: Movie }
+        { path: 'movie/:mid', component: Movie, props: true }
       ]
     }
   ]
