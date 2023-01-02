@@ -43,4 +43,12 @@ const router = new Router({
   ]
 })
 
+// 全局路由守卫，当每次路由跳转时，会先调用这个回调函数，判断是否可以继续跳转
+router.beforeEach((to, from, next) => {
+  /* must call `next` */
+
+  console.log(to)
+  next()
+})
+
 export default router
