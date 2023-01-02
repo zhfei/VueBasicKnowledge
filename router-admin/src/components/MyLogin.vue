@@ -56,7 +56,7 @@ export default {
       this.password = ''
     },
     login() {
-      if (this.username === 'admin' && this.password === '666666') {
+      if (this.username === 'admin' && this.password === '123456') {
         // 登录成功
         // 1. 存储 token
         localStorage.setItem('token', 'Bearer xxxx')
