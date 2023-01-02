@@ -10,5 +10,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router
+  // 挂载路由实例对象
+  router 
 }).$mount('#app')
