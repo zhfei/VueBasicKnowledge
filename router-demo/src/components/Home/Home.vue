@@ -9,6 +9,7 @@
     <!-- 行内使用编程式导航，要省略this,否则报错 -->
     <button @click="$router.forward()">go便捷调用-forward前进一步</button>
     <button @click="$router.back()">go便捷调用-back后退一步</button>
+    <button @click="$router.push('/main')">进入Main页面</button>
 
   </div>
 </template>

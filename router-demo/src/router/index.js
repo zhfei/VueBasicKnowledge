@@ -6,6 +6,8 @@ import Home from '@/components/Home/Home.vue'
 import Tab1 from '@/components/Tabs/Tab1.vue'
 import Tab2 from '@/components/Tabs/Tab2.vue'
 import Movie from '@/components/Movie/Movie.vue'
+import Main from '@/components/Main/Main.vue'
+import Login from '@/components/Login/Login.vue'
 
 // 将Router安装为Vue的插件
 Vue.use(Router)
@@ -39,16 +41,28 @@ const router = new Router({
         // id部分是可变路由的参数部分，它是随参数变化的。
         { path: 'movie/:mid', component: Movie, props: true }
       ]
-    }
+    },
+    { path: '/login', component: Login },
+    { path: '/main', component: Main }
   ]
 })
 
 // 全局路由守卫，当每次路由跳转时，会先调用这个回调函数，判断是否可以继续跳转
 router.beforeEach((to, from, next) => {
   /* must call `next` */
-
   console.log(to)
-  next()
+
+  if (to.path === '/main') {
+    const token = localStorage.getItem('login-token')
+    if (token) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    // next：放行，如果运行路由跳转，则需要调用next()
+    next()
+  }
 })
 
 export default router
