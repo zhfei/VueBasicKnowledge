@@ -9,8 +9,9 @@
       <MyAside></MyAside>
 
       <!-- 右侧内容 -->
-      <div class="home-main body">
-        主题
+      <div class="home-main-body">
+        <!-- 路由出口视图 占位 -->
+        <router-view></router-view>
       </div>
     </div>
   
