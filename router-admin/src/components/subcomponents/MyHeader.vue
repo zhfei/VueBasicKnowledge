@@ -10,7 +10,7 @@
 
     <!-- 右侧按钮区域 -->
     <div class="layout-header-right">
-      <button type="button" class="btn btn-light" @click="logout">退出登录</button>
+      <button type="button" class="btn btn-light" @click="handleGoOut">退出登录</button>
     </div>
   </div>
 </template>
@@ -19,10 +19,10 @@
 export default {
   name: 'MyHeader',
   methods: {
-    logout() {
-      // 1. 清空 token
+    handleGoOut() {
+      // 清除token
       localStorage.removeItem('token')
-      // 2. 跳转到登录页面
+      // 跳转到home页
       this.$router.push('/login')
     }
   }
