@@ -3,15 +3,17 @@
     <!-- 头部区域 -->
     <MyHeader></MyHeader>
 
-    <!-- 页面主体区域 -->
+    <!-- 内容区域 -->
     <div class="home-main-box">
-      <!-- 左侧边栏 -->
+      <!-- 左侧主题 -->
       <MyAside></MyAside>
-      <!-- 右侧内容主体区域 -->
-      <div class="home-main-body">
-        <router-view></router-view>
+
+      <!-- 右侧内容 -->
+      <div class="home-main body">
+        主题
       </div>
     </div>
+  
   </div>
 </template>
 
