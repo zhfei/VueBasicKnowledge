@@ -17,14 +17,18 @@ const router = new VueRouter({
   routes: [
     { path: '/', redirect: '/login' },
     { path: '/login', component: MyLogin },
-    { path: '/home', component: MyHome ,children: [
-      { path: 'users', component: MyUsers },
-      { path: 'settings', component: MySettings },
-      { path: 'rights', component: MyRights },
-      { path: 'orders', component: MyOrders },
-      { path: 'goods', component: MyGoods },
-      { path: 'userinfo/:id', component: MyUserDetail, props: true}
-    ]},
+    // 重定向：确定原来地址url是啥，看着不爽，要重定向到哪个url
+    { path: '/home',  
+      redirect: '/home/users',
+      component: MyHome ,
+      children: [
+        { path: 'users', component: MyUsers },
+        { path: 'settings', component: MySettings },
+        { path: 'rights', component: MyRights },
+        { path: 'orders', component: MyOrders },
+        { path: 'goods', component: MyGoods },
+        { path: 'userinfo/:id', component: MyUserDetail, props: true}
+      ]},
   ]
 })
 
