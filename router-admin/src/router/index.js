@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import FilterArray from './FilterArray'
 import MyLogin from '@/components/MyLogin.vue'
 import MyHome from '@/components/MyHome.vue'
 import MyGoods from '@/components/menus/MyGoods.vue'
@@ -34,8 +35,7 @@ const router = new VueRouter({
 
 // 添加路由全局前置守卫，当本地没有存在登录token时，跳转到home将被拦截到login页
 router.beforeEach((to, from ,next)=>{
-    const filterArray = ['/home','/home/users','/home/rights']
-    if (filterArray.indexOf(to.path) !== -1) {
+    if (FilterArray.indexOf(to.path) !== -1) {
       const token = localStorage.getItem('token')
       if (token) {
         next()
