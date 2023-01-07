@@ -34,8 +34,8 @@ const router = new VueRouter({
 
 // 添加路由全局前置守卫，当本地没有存在登录token时，跳转到home将被拦截到login页
 router.beforeEach((to, from ,next)=>{
-  console.log(to);
-    if (to.path === '/home') {
+    const filterArray = ['/home','/home/users','/home/rights']
+    if (filterArray.indexOf(to.path) !== -1) {
       const token = localStorage.getItem('token')
       if (token) {
         next()
