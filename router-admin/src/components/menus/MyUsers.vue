@@ -21,7 +21,8 @@
           <td>{{ item.age }}</td>
           <td>{{ item.position }}</td>
           <td>
-            <a href="#" @click.prevent="gotoDetail(item.id)">详情</a>
+            <!-- <a href="#" @click.prevent="gotoDetail(item.id)">详情</a> -->
+            <router-link :to="'/home/userinfo/'+item.id">详情</router-link>
           </td>
         </tr>
       </tbody>

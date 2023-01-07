@@ -7,6 +7,7 @@ import MyOrders from '@/components/menus/MyOrders.vue'
 import MyRights from '@/components/menus/MyRights.vue'
 import MySettings from '@/components/menus/MySettings.vue'
 import MyUsers from '@/components/menus/MyUsers.vue'
+import MyUserDetail from '@/components/user/MyUserDetail.vue'
 
 // 在Vue中挂载插件VueRouter
 Vue.use(VueRouter)
@@ -22,6 +23,7 @@ const router = new VueRouter({
       { path: 'rights', component: MyRights },
       { path: 'orders', component: MyOrders },
       { path: 'goods', component: MyGoods },
+      { path: 'userinfo/:id', component: MyUserDetail}
     ]},
   ]
 })
