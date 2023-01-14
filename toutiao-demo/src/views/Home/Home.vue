@@ -1,6 +1,28 @@
 <template>
-  <div>
-    <h2>Home 组件</h2>
+  <div class="home-container">
+    <van-nav-bar title="黑马头条" fixed/>
+
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+    <h2>hello</h2>
+
   </div>
 </template>
 
@@ -24,6 +46,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
+.home-container {
+  padding: 45px 0 50px 0;
+}
 
 </style>
