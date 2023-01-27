@@ -1,21 +1,20 @@
 <template>
   <div class="home-container">
     <van-nav-bar title="黑马头条" fixed/>
-    <ul>
-      <li v-for="(item, index) in list" :key="index">
-        {{ item.title }}
-        <img v-for="(imageUrl, index) in item.cover.images" :key="index" :src="imageUrl" height="60"/>
-      </li>
-    </ul>
+    <Article v-for="item in list" :key="item.id"></Article>
   </div>
 </template>
 
 <script>
 // 按需导入API函数
 import { articleAPI } from '@/api/articleAPI'
+import Article from '@/components/Articles/Article.vue'
 
 export default {
   name: 'ToutiaoDemoHome',
+  components: {
+    Article
+  },
 
   data () {
     return {
