@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import request from '@/utils/request'
+// 按需导入API函数
+import { articleAPI } from '@/api/articleAPI'
 
 export default {
   name: 'ToutiaoDemoHome',
@@ -34,16 +35,11 @@ export default {
 
   methods: {
     async initArticleList () {
-      const { data: result } = await request.get('/articles', {
-        params: {
-          _page: this.page,
-          _limit: this.limit
-        }
-      })
+      const { data: result } = await articleAPI(this.page, this.limit)
       this.list = [...result, ...this.list]
       console.log(result)
     }
-  }
+  }            
 }
 </script>
 
