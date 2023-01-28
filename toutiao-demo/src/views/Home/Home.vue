@@ -6,6 +6,7 @@
              :comm-count="item.comm_count" 
              :title="item.title"
              :time="item.pubdate"
+             :cover="item.cover"
              :name="item.aut_name"></Article>
   </div>
 </template>

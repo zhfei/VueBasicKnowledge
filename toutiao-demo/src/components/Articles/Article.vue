@@ -5,13 +5,11 @@
       <template #title>
         <div class="title-box">
           <span> {{ title }} </span>
-          <img src="../../assets/phone0.jpg" alt="" srcset="" height="160" class="thumb">
+          <img srcset="../../assets/phone0.jpg" alt="" :src="cover.images[0]" height="160" class="thumb" v-if="cover.type === 1">
         </div>
         <!-- 三张图片 -->
         <div class="thumb-box">
-          <img src="../../assets/phone0.jpg" alt="" srcset="" height="160" class="thumb">
-          <img src="../../assets/phone1.jpg" alt="" srcset="" height="160" class="thumb">
-          <img src="../../assets/phone2.jpeg" alt="" srcset="" height="160" class="thumb">
+          <img srcset="../../assets/phone1.jpg" alt="" :src="item" height="160" class="thumb" v-for="(item,i) in cover.images" :key="i">
         </div>
       </template>
 
@@ -37,7 +35,7 @@ export default {
     },
     commCount: {
       // 1.可接收多种类型时，使用数组声明
-      // 2.对于有2个单词组成的，第二个单词首字母要大写，而父组件传参属性推荐用comm-count设置
+      // 2.对于有2个单词组成的，第二个单词首字母要大写，而父组件传参属性推荐用连字符格式comm-count设置
       type: [String, Number], 
       default: ''
     },
@@ -48,6 +46,12 @@ export default {
     time: {
       type: String,
       default: ''
+    },
+    cover: {
+      type: Object,
+      default: function () {
+        return { type: 0 }
+      }
     }
   },  
   data () {
