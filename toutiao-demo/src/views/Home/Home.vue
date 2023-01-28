@@ -1,7 +1,12 @@
 <template>
   <div class="home-container">
     <van-nav-bar title="黑马头条" fixed/>
-    <Article v-for="item in list" :key="item.id"></Article>
+    <Article v-for="item in list" 
+             :key="item.id" 
+             :comm-count="item.comm_count" 
+             :title="item.title"
+             :time="item.pubdate"
+             :name="item.aut_name"></Article>
   </div>
 </template>
 
