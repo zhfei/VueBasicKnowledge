@@ -1,13 +1,20 @@
 <template>
   <div class="home-container">
     <van-nav-bar title="黑马头条" fixed/>
-    <Article v-for="item in list" 
-             :key="item.id" 
-             :comm-count="item.comm_count" 
-             :title="item.title"
-             :time="item.pubdate"
-             :cover="item.cover"
-             :name="item.aut_name"></Article>
+    <van-list 
+      v-model:loading="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <Article v-for="item in list" 
+              :key="item.id" 
+              :comm-count="item.comm_count" 
+              :title="item.title"
+              :time="item.pubdate"
+              :cover="item.cover"
+              :name="item.aut_name"></Article>
+    </van-list>
   </div>
 </template>
 
@@ -26,7 +33,9 @@ export default {
     return {
       page: 1,
       limit: 10,
-      list: []
+      list: [],
+      loading: false,
+      finished: false
     }
   },
 
@@ -42,7 +51,13 @@ export default {
     async initArticleList () {
       const { data: result } = await articleAPI(this.page, this.limit)
       this.list = [...result, ...this.list]
+      this.loading = false
       console.log(result)
+    },
+    onLoad () {
+      this.loading = true
+      this.page++
+      this.initArticleList()
     }
   }            
 }
